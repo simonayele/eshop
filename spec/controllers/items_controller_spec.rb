@@ -103,9 +103,15 @@ RSpec.describe ItemsController, type: :controller do
       user = FactoryBot.create(:user)
       sign_in user
 
+      post :create, params: {
+        item: {
+          title: 'Hello!',
+          image: fixture_file_upload("/picture.png", 'image/png')
+        }
+      }
 
       post :create, params: { item: { title: 'Hello!' } }
-      expect(response).to redirect_to root_path
+      
 
       item = Item.last
       expect(item.title).to eq("Hello!")

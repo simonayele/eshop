@@ -35,6 +35,7 @@ class ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.all
   end
 
   def create
@@ -49,7 +50,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title)
+    params.require(:item).permit(:title, :image)
   end
 
   def render_not_found
