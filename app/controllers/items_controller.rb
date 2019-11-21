@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :image)
+    params.require(:item).permit(:title, {image: []}, :price, :description)
   end
 
   def render_not_found
